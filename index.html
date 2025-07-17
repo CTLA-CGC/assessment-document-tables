@@ -4,9 +4,32 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <title>CGCC Assessment Document Table</title>
     </head>
     <body>
         <h1>CGCC Assessment Document Table</h1>
+        <div id="table_div"></div>
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var query = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/1G-_L01xtEE5H2fYDPP7lp-UFBppGyaTz5R0DDR4D3G0/gviz/tq?sheet=Division Assessment Resources');
+        query.send(function(response) {
+          var data = response.getDataTable();
+          var table = new google.visualization.Table(document.getElementById('table_div'));
+          table.draw(data, {
+            showRowNumber: true,
+            width: '100%',
+            height: 'auto',
+            alternatingRowStyle: true,
+            allowHtml: true
+          });
+        });
+      }
+    </script>
     </body>
     </html>
