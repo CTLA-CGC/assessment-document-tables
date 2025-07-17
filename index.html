@@ -37,12 +37,7 @@
           }
         }
       });
-              // Format the URL column as a clickable link
-    var urlColIndex = data.getColumnIndex('URL'); // Make sure 'URL' matches your header
-    var formatter = new google.visualization.PatternFormat(
-      '<a href="{0}" target="_blank" rel="noopener">Open Resource</a>'
-    );
-    formatter.format(data, [urlColIndex]);
+
           var table = new google.visualization.Table(document.getElementById('table_div'));
           table.draw(data, {
             showRowNumber: true,
